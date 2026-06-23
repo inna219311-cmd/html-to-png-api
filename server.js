@@ -49,7 +49,7 @@ app.post('/convert', async (req, res) => {
     try {
       browser = await chromium.launch({
         headless: true,
-        args: ['--disable-dev-shm-usage', '--disable-gpu']
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu']
       });
 
       const page = await browser.newPage({
@@ -112,7 +112,7 @@ app.post('/convert-file', async (req, res) => {
     try {
       browser = await chromium.launch({
         headless: true,
-        args: ['--disable-dev-shm-usage']
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu']
       });
 
       const page = await browser.newPage({
@@ -157,7 +157,7 @@ app.post('/batch', async (req, res) => {
     try {
       browser = await chromium.launch({
         headless: true,
-        args: ['--disable-dev-shm-usage']
+        args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu']
       });
 
       for (const item of items) {
